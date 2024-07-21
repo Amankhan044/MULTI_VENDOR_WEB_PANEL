@@ -3,7 +3,7 @@ import 'package:multi_vendor_web_panel/model/upload_imagepicker_provider.dart';
 import 'package:provider/provider.dart';
 
 class UploadScreen extends StatelessWidget {
-  const UploadScreen({super.key});
+   UploadScreen({super.key});
 
   static const String routeName = '\Upload';
 
@@ -80,14 +80,23 @@ class UploadScreen extends StatelessWidget {
               SizedBox(
                 width: 10,
               ),
-              ElevatedButton(
-                  style:
-                      ElevatedButton.styleFrom(primary: Colors.yellow.shade900),
-                  onPressed: () {},
-                  child: Text(
-                    'save',
-                    style: TextStyle(color: Colors.white),
-                  ))
+              Consumer<ImagePickerProvider>(
+                builder: (BuildContext context, value, Widget? child) { 
+
+                  return ElevatedButton(
+                    style:
+                        ElevatedButton.styleFrom(primary: Colors.yellow.shade900),
+                    onPressed: () {
+                       value.uploadToFirestore();
+                      
+                    },
+                    child: Text(
+                      'save',
+                      style: TextStyle(color: Colors.white),
+                    ));
+                 },
+                
+              )
             ],
           )
         ],
