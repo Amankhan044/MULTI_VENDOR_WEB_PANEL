@@ -62,6 +62,7 @@ class CategoryImagePickerProvider with ChangeNotifier {
         }).whenComplete(() {
           EasyLoading.dismiss();
           _image = null;
+          _formKey.currentState!.reset();
           notifyListeners();
         });
       } else {

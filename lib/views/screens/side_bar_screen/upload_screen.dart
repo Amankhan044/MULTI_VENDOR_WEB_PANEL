@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:multi_vendor_web_panel/model/upload_imagepicker_provider.dart';
+import 'package:multi_vendor_web_panel/views/screens/side_bar_screen/widget/banners_widget.dart';
 import 'package:provider/provider.dart';
 
 class UploadScreen extends StatelessWidget {
-   UploadScreen({super.key});
+  UploadScreen({super.key});
 
   static const String routeName = '\Upload';
 
@@ -23,8 +24,11 @@ class UploadScreen extends StatelessWidget {
               ),
             ),
           ),
-          Divider(
-            color: Colors.grey,
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Divider(
+              color: Colors.grey,
+            ),
           ),
           Row(
             children: [
@@ -81,24 +85,38 @@ class UploadScreen extends StatelessWidget {
                 width: 10,
               ),
               Consumer<ImagePickerProvider>(
-                builder: (BuildContext context, value, Widget? child) { 
-
+                builder: (BuildContext context, value, Widget? child) {
                   return ElevatedButton(
-                    style:
-                        ElevatedButton.styleFrom(primary: Colors.yellow.shade900),
-                    onPressed: () {
-                       value.uploadToFirestore();
-                      
-                    },
-                    child: Text(
-                      'save',
-                      style: TextStyle(color: Colors.white),
-                    ));
-                 },
-                
+                      style: ElevatedButton.styleFrom(
+                          primary: Colors.yellow.shade900),
+                      onPressed: () {
+                        value.uploadToFirestore();
+                      },
+                      child: Text(
+                        'save',
+                        style: TextStyle(color: Colors.white),
+                      ));
+                },
               )
             ],
-          )
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Divider(
+              color: Colors.grey,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              alignment: Alignment.topLeft,
+              child: Text(
+                "Banners",
+                style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
+              ),
+            ),
+          ),
+          BannersWidget()
         ],
       ),
     );
