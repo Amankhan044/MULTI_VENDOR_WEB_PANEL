@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:multi_vendor_web_panel/views/screens/side_bar_screen/widget/vendor_widget.dart';
 
 class VendorScreen extends StatelessWidget {
   const VendorScreen({super.key});
@@ -39,7 +40,8 @@ Widget _rowWidger(String text, int flex){
                 _rowWidger("ACTION",1),
                 _rowWidger("VIEW MORE",1),
               ],
-            )
+            ),
+            VendorWidget()
           ],
         ),
       );
